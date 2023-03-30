@@ -239,20 +239,6 @@ import { useEffect, useState } from 'react';
 //   return <Clock value={new Date()} />;
 // }
 
-function Clock() {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
-  return <div>{time.toLocaleTimeString()}</div>;
-}
-
 function Content(props) {
   const [searchValue, setSearchValue] = useState('');
   const { items, ...otherProps } = props;
@@ -275,7 +261,6 @@ function Content(props) {
       />
       <HTMLComment text="This is my list" />
       <List {...otherProps} items={newItems} />
-      <Clock />
     </main>
   );
 }

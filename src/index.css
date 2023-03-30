@@ -16,10 +16,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.jc-c {
-  justify-content: center;
-}
-
 .App {
   display: flex;
   flex-direction: column;
@@ -47,9 +43,18 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* justify-content: center; */
   align-items: center;
   overflow-y: auto;
+}
+
+main .empty,
+main .list {
+  flex-grow: 1;
+}
+
+main .empty {
+  display: grid;
+  place-items: center;
 }
 
 footer {
@@ -62,13 +67,13 @@ footer {
   text-align: center;
 }
 
-ul {
+.list {
   width: 100%;
   list-style: none;
   padding: 0 0.25rem 0.25rem;
 }
 
-ul li::before {
+.list li::before {
   content: '\200B';
 }
 
