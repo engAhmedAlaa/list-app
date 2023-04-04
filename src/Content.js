@@ -2,7 +2,7 @@ import AddItem from './AddItem';
 import SearchItem from './SearchItem';
 import List from './List';
 import HTMLComment from 'react-html-comment';
-import { useEffect, useState } from 'react';
+import { useState, useMemo } from 'react';
 
 // import { useEffect, useState } from 'react';
 
@@ -242,18 +242,22 @@ import { useEffect, useState } from 'react';
 function Content(props) {
   const [searchValue, setSearchValue] = useState('');
   const { items, ...otherProps } = props;
-  const newItems = !searchValue
-    ? items
-    : items.filter((item) =>
-        item.content.toLowerCase().includes(searchValue.trim().toLowerCase())
-      );
+  const newItems = useMemo(
+    () =>
+      searchValue === ''
+        ? items
+        : items.filter((item) =>
+            item.content.toLowerCase().includes(searchValue.toLowerCase())
+          ),
+    [items, searchValue]
+  );
 
   function handleSearchItem(event) {
     setSearchValue(event.target.value);
   }
 
   return (
-    <main className={items.length === 0 ? 'jc-c' : ''}>
+    <main>
       <AddItem handleAddItem={props.handleAddItem} />
       <SearchItem
         handleSearchItem={handleSearchItem}

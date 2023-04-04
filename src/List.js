@@ -12,7 +12,11 @@ function List({ items, handleChangeItem, handleDeleteItem }) {
     );
   });
 
-  return items.length ? <ul>{itemsEle}</ul> : <p>Your list is empty.</p>;
+  return items.length ? (
+    <ul className="list">{itemsEle}</ul>
+  ) : (
+    <p className="empty">Your list is empty.</p>
+  );
 }
 
 export default List;

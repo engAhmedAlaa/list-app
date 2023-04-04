@@ -76,12 +76,12 @@ function App() {
 
   function handleAddItem(newItemContent) {
     setItems([
-      ...items,
       {
         id: uuidV4(),
         checked: false,
         content: newItemContent,
       },
+      ...items,
     ]);
   }
 
